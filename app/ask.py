@@ -1,5 +1,6 @@
 from search import search
 from clients import claude
+import os
 
 question = "Do you ship to the moon?"
 
@@ -9,7 +10,7 @@ context = "\n\n".join(f"[{source}] {content}" for source, content in chunks)
 prompt = f"Context:\n{context}\n\nQuestion: {question}"
 
 msg = claude.messages.create(
-    model="claude-haiku-4-5-20251001",
+    model=os.environ["ANTHROPIC_API_MODEL"],
     max_tokens=500,
     system=(
         "You are a customer-support assistant. Answer the user's question using "
