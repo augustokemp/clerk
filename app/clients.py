@@ -7,7 +7,8 @@ from anthropic import Anthropic
 load_dotenv()
 
 conn = psycopg.connect(
-    host="localhost", port=5432,
+    host=os.environ["POSTGRES_HOST"],
+    port=5432,
     dbname=os.environ["POSTGRES_DB"],
     user=os.environ["POSTGRES_USER"],
     password=os.environ["POSTGRES_PASSWORD"],
